@@ -3,40 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    public float speed = 10f;
+    [HideInInspector]
+    public float speed;
+    public float startSpeed = 10f;
 
-    private Transform target;
-    private int wavepointIndex = 0;
+    public float health = 100;
+    public int moneyGain = 30;
 
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
-     
+    public GameObject deathEffect;
+
     void Start()
     {
-        target = Waypoints.waypoints[wavepointIndex];
+        speed = startSpeed;
     }
 
-    void Update()
+    public void TakeDamage(float amount)
     {
-        //l'ennemie se dirife vers le waypoint
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        Debug.Log("LIFE:"+health+" - bulelt damage: " + amount);
+        health -= amount;
 
-        //si on a atteint le waypoint
-        if(Vector3.Distance(transform.position,target.position) <= 1f)
+        if (health <= 0)
         {
-            GetNextWaypoint();
+            Die();
         }
     }
 
-    void GetNextWaypoint()
+    void Die()
     {
-        if(wavepointIndex == Waypoints.waypoints.Length-1)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        wavepointIndex++;
-        target = Waypoints.waypoints[wavepointIndex];
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 3f);
+        Debug.Log("DIe");
+        PlayerStats.Money += moneyGain;
+        Destroy(gameObject);
+    }
+
+    public void Slow(float slow)
+    {
+        speed = startSpeed * (1f - slow);
+        Debug.Log("speed:"+speed);
     }
 }

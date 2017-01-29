@@ -22,20 +22,23 @@ public class WaveSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //timer
 		if(countDown <= 0f)
         {
             StartCoroutine(SpawnWave());
             countDown = timeBetweenWaves;
         }
         countDown -= Time.deltaTime;
+        countDown = Mathf.Clamp(countDown, 0f, Mathf.Infinity);
 
-        waveCountdownText.text = Mathf.Round(countDown).ToString();
+        waveCountdownText.text = string.Format("{0:00.00}",countDown);
 
     }
 
     IEnumerator SpawnWave()
     {
         waveIndex++;
+        PlayerStats.Waves = waveIndex;
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
