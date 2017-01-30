@@ -9,13 +9,18 @@ public class Node : MonoBehaviour {
     public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
 
-    [Header("Optional")]
+    [HideInInspector]
     public GameObject turret;
+
+    [HideInInspector]
+    public TurretBlueprint turretBlueprint;
+
+    [HideInInspector]
+    public bool isUpgraded;
 
     private Renderer rend;
     private Color startColor;
-    
-
+   
     BuildManager buildManager;
 
     public Vector3 GetBuildPosition()
@@ -60,13 +65,61 @@ public class Node : MonoBehaviour {
         if (!buildManager.CanBuild)
             return;
 
+        //tour présente sur la node
         if(turret != null)
         {
+            buildManager.SelectNode(this);
             Debug.Log("can't build there!");
             return;
         }
-        buildManager.BuildTurretOn(this);
-        
+
+        BuildTurret(buildManager.GetTurretToBuild()); 
+    }
+
+    void BuildTurret(TurretBlueprint turretToBuild)
+    {
+        Debug.Log("=BuildTurret=");
+        if (PlayerStats.Money < turretToBuild.cost)
+        {
+            Debug.Log("Not enough money to build that!");
+            return;
+        }
+
+        PlayerStats.Money -= turretToBuild.cost;
+
+        GameObject _turret = (GameObject)Instantiate(turretToBuild.prefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        turretBlueprint = turretToBuild;
+
+        GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Debug.Log("Turret build! Money left: " + PlayerStats.Money);
+    }
+
+    public void UpgradeTurret()
+    {
+        Debug.Log("=UpgradeTurret=");
+        if (PlayerStats.Money < turretBlueprint.upgradeCost)
+        {
+            Debug.Log("Not enough money to build that!");
+            return;
+        }
+
+        PlayerStats.Money -= turretBlueprint.upgradeCost;
+
+        //on détruit l'ancienne tower
+        Destroy(turret);
+
+        //construit nouvelle tower
+        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Debug.Log("Turret upgraded!");
     }
 
 }

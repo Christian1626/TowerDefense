@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenEnemies);
         }
         
-        Debug.Log(waveIndex);
+        Debug.Log("Wave Level:"+waveIndex);
 
     }
 

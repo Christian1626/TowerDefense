@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("LIFE:"+health+" - bulelt damage: " + amount);
+        //Debug.Log("LIFE:"+health+" - bullet damage: " + amount);
         health -= amount;
 
         if (health <= 0)
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
     {
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 3f);
-        Debug.Log("DIe");
+        //Debug.Log("DIE");
         PlayerStats.Money += moneyGain;
         Destroy(gameObject);
     }
@@ -40,6 +40,5 @@ public class Enemy : MonoBehaviour {
     public void Slow(float slow)
     {
         speed = startSpeed * (1f - slow);
-        Debug.Log("speed:"+speed);
     }
 }
