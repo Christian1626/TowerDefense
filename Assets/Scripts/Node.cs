@@ -62,18 +62,20 @@ public class Node : MonoBehaviour {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!buildManager.CanBuild)
-            return;
-
         //tour présente sur la node
-        if(turret != null)
+        if (turret != null)
         {
             buildManager.SelectNode(this);
             Debug.Log("can't build there!");
             return;
         }
 
-        BuildTurret(buildManager.GetTurretToBuild()); 
+        if (!buildManager.CanBuild)
+            return;
+
+        Debug.Log("COST DOWN:" + turretBlueprint.cost);
+
+        BuildTurret(buildManager.GetTurretToBuild());
     }
 
     void BuildTurret(TurretBlueprint turretToBuild)
@@ -122,4 +124,13 @@ public class Node : MonoBehaviour {
         Debug.Log("Turret upgraded!");
     }
 
+    public void SellTurret()
+    {
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+        
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(turret);
+    }
 }
