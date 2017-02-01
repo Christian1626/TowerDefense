@@ -31,9 +31,9 @@ public class Enemy : MonoBehaviour {
     {
         //Debug.Log("LIFE:"+health+" - bullet damage: " + amount);
         currentHealth -= amount;
-        healthBar.fillAmount = currentHealth / startHealth;
 
-        if(currentHealth > 75)
+        float healthPercent = currentHealth * 100 / startHealth;
+        if (healthPercent > 75)
         {
             healthBar.color = FullHealth;
         } else if(currentHealth <= 75 && currentHealth > 35)
@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour {
         {
             healthBar.color = LowHealth;
         }
+
+        healthBar.fillAmount = currentHealth / startHealth;
 
         if (currentHealth <= 0)
         {
