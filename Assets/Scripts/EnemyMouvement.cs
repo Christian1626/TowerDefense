@@ -10,8 +10,6 @@ public class EnemyMouvement : MonoBehaviour {
 
     private Enemy enemy;
 
-    public GameObject deathEffect;
-
     void Start()
     {
         //recupère l'enemmi du component

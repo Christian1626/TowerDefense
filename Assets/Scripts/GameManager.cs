@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour {
 
     void EndGame()
     {
-        Debug.Log("ENDGAME");
         GameIsOver = true;
         Debug.Log("Game Over!");
 

@@ -1,28 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
     [HideInInspector]
     public float speed;
     public float startSpeed = 10f;
 
-    public float health = 100;
+    public float startHealth = 100;
+    private float currentHealth;
     public int moneyGain = 30;
 
     public GameObject deathEffect;
 
+    [Header("Unity Stuff")]
+    public Image healthBar;
+    public Color FullHealth;
+    public Color MediumHealth;
+    public Color LowHealth;
+
+
     void Start()
     {
         speed = startSpeed;
+        currentHealth = startHealth;
     }
 
     public void TakeDamage(float amount)
     {
         //Debug.Log("LIFE:"+health+" - bullet damage: " + amount);
-        health -= amount;
+        currentHealth -= amount;
+        healthBar.fillAmount = currentHealth / startHealth;
 
-        if (health <= 0)
+        if(currentHealth > 75)
+        {
+            healthBar.color = FullHealth;
+        } else if(currentHealth <= 75 && currentHealth > 35)
+        {
+            healthBar.color = MediumHealth;
+        } else
+        {
+            healthBar.color = LowHealth;
+        }
+
+        if (currentHealth <= 0)
         {
             Die();
         }
