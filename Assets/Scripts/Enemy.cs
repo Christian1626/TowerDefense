@@ -59,6 +59,8 @@ public class Enemy : MonoBehaviour {
         //Debug.Log("DIE");
         PlayerStats.Money += moneyGain;
         Destroy(gameObject);
+
+        WaveSpawner.EnemiesAlive--;
     }
 
     public void Slow(float slow)

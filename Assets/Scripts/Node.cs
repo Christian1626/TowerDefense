@@ -73,14 +73,11 @@ public class Node : MonoBehaviour {
         if (!buildManager.CanBuild)
             return;
 
-        Debug.Log("COST DOWN:" + turretBlueprint.cost);
-
         BuildTurret(buildManager.GetTurretToBuild());
     }
 
     void BuildTurret(TurretBlueprint turretToBuild)
     {
-        Debug.Log("=BuildTurret=");
         if (PlayerStats.Money < turretToBuild.cost)
         {
             Debug.Log("Not enough money to build that!");
