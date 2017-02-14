@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour {
     public Light laserImpactLight;
     public int damageOverTime = 40;
     public float laserSlow = .1f;
+    
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";

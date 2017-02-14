@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
     public float speed = 70f;
     public int damage = 50;
     public float explosionRadius = 0f;
+    public bool zoneSlowImpact = false;
+    public float bulletSlow = 0f;
 
     public GameObject impactEffect;
    
@@ -58,6 +60,7 @@ public class Bullet : MonoBehaviour {
 
     void Explode()
     {
+        Debug.Log("Explode");
         Collider[] colliders = Physics.OverlapSphere(transform.position,explosionRadius);
         foreach (Collider collider in colliders)
         {
@@ -76,7 +79,10 @@ public class Bullet : MonoBehaviour {
         if(e != null)
         {
             e.TakeDamage(damage);
-        }
+            Debug.Log("speed1:" + e.speed);
+            e.Slow(bulletSlow);
+            Debug.Log("speed2:" + e.speed);
+        } 
     }
 
     void OnDrawGizmosSelected()

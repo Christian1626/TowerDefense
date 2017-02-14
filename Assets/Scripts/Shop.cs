@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Selectionne la tour a construire.
+ **/
 public class Shop : MonoBehaviour {
 
     BuildManager buildManager;
     public TurretBlueprint standartTurret;
     public TurretBlueprint missileLauncherTurret;
     public TurretBlueprint laserBeamerTurret;
+    public TurretBlueprint frozenTurret;
 
     void Start()
     {
@@ -16,19 +20,25 @@ public class Shop : MonoBehaviour {
 
     public void SelectStandartTurret()
     {
-        Debug.Log("Standart Turred Selected:"+standartTurret.cost);
+        Debug.Log("Standart Turret Selected:" + standartTurret.cost);
         buildManager.SelectTurretToBuild(standartTurret);
     }
 
     public void SelectMissileTurret()
     {
-        Debug.Log("Missile Turred Selected");
+        Debug.Log("Missile Turret Selected");
         buildManager.SelectTurretToBuild(missileLauncherTurret);
     }
 
     public void SelectLaserBeamerTurret()
     {
-        Debug.Log("Laser Beamer Selected");
+        Debug.Log("Laser Beamer Turret Selected");
         buildManager.SelectTurretToBuild(laserBeamerTurret);
+    }
+
+    public void SelectFrozenTurret()
+    {
+        Debug.Log("Frozen Turret Selected");
+        buildManager.SelectTurretToBuild(frozenTurret);
     }
 }

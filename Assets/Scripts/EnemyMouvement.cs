@@ -19,7 +19,7 @@ public class EnemyMouvement : MonoBehaviour {
 
     void Update()
     {
-        //l'ennemie se dirife vers le waypoint
+        //l'ennemie se dirige vers le waypoint
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
