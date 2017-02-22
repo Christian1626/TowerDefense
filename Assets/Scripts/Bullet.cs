@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
     public float explosionRadius = 0f;
     public bool zoneSlowImpact = false;
     public float bulletSlow = 0f;
-
+    public float fadingSlowTime = 2f;
     public GameObject impactEffect;
    
 
@@ -67,6 +67,8 @@ public class Bullet : MonoBehaviour {
             if(collider.tag == "Enemy")
             {
                 Damage(collider.transform);
+                if (zoneSlowImpact)
+                    Slow(collider.transform);
             }
         }
 
@@ -79,9 +81,6 @@ public class Bullet : MonoBehaviour {
         if(e != null)
         {
             e.TakeDamage(damage);
-            Debug.Log("speed1:" + e.speed);
-            e.Slow(bulletSlow);
-            Debug.Log("speed2:" + e.speed);
         } 
     }
 
@@ -89,6 +88,12 @@ public class Bullet : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    void Slow(Transform enemy)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+        e.Slow(bulletSlow, fadingSlowTime);
     }
 
 }

@@ -28,7 +28,10 @@ public class EnemyMouvement : MonoBehaviour {
         {
             GetNextWaypoint();
         }
+    }
 
+    void ResetSpeed()
+    {
         enemy.speed = enemy.startSpeed;
     }
 

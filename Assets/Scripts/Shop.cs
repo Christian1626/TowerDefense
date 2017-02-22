@@ -12,6 +12,7 @@ public class Shop : MonoBehaviour {
     public TurretBlueprint missileLauncherTurret;
     public TurretBlueprint laserBeamerTurret;
     public TurretBlueprint frozenTurret;
+    public TurretBlueprint lightningTurret;
 
     void Start()
     {
@@ -40,5 +41,11 @@ public class Shop : MonoBehaviour {
     {
         Debug.Log("Frozen Turret Selected");
         buildManager.SelectTurretToBuild(frozenTurret);
+    }
+
+    public void SelectLightningTurret()
+    {
+        Debug.Log("Ligntning Turret Selected");
+        buildManager.SelectTurretToBuild(lightningTurret);
     }
 }

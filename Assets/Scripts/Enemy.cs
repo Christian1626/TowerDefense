@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour {
     public Color MediumHealth;
     public Color LowHealth;
 
-
     void Start()
     {
         speed = startSpeed;
@@ -63,8 +62,14 @@ public class Enemy : MonoBehaviour {
         WaveSpawner.EnemiesAlive--;
     }
 
-    public void Slow(float slow)
+    public void Slow(float slow, float fadingSlowTime)
     {
         speed = startSpeed * (1f - slow);
+        Invoke("ResetSpeed", fadingSlowTime);
+    }
+
+    public void ResetSpeed()
+    {
+        speed = startSpeed;
     }
 }
