@@ -98,11 +98,14 @@ public class Shop : MonoBehaviour {
 
     void SetTowerInfoData(TurretBlueprint tower)
     {
+        TowerAbstract script;
+        script = tower.prefab.GetComponent<TowerAbstract>();
+
         towerInfo.SetActive(true);
         //Get Tower
-        name.text = "tower.name";
+        name.text = script.name;
         cost.text = tower.cost.ToString();
-        range.text = "tower.range";
+        range.text = script.range.ToString();
         abilities.text = "tower.abilities";
         strong.text = "tower.strong";
         weak.text = "tower.weak";

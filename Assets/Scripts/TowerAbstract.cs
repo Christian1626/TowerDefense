@@ -8,6 +8,7 @@ abstract public class TowerAbstract : MonoBehaviour
     protected Enemy targetEnemy;
 
     [Header("General")]
+    public string name;
     public float turnSpeed = 10f;
     public float range = 15f;
 

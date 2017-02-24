@@ -112,6 +112,7 @@ public class Node : MonoBehaviour {
         Destroy(turret);
 
         //construit nouvelle tower
+        Debug.Log("PREFAB:" + turretBlueprint.upgradePrefab);
         GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradePrefab, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
 

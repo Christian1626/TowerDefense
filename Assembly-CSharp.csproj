@@ -65,7 +65,6 @@
      <Compile Include="Assets\Scripts\Shop.cs" />
      <Compile Include="Assets\Scripts\StandartTower.cs" />
      <Compile Include="Assets\Scripts\TowerAbstract.cs" />
-     <Compile Include="Assets\Scripts\TowerInfoUI.cs" />
      <Compile Include="Assets\Scripts\TurretBlueprint.cs" />
      <Compile Include="Assets\Scripts\TurretUI.cs" />
      <Compile Include="Assets\Scripts\Wave.cs" />
