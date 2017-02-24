@@ -9,6 +9,7 @@ public class BuildManager : MonoBehaviour
     public GameObject sellEffect;
 
     private TurretBlueprint turretToBuild;
+    private TurretBlueprint turretInfo;
     private Node selectedNode;
 
     public TurretUI turretUI;
@@ -56,5 +57,4 @@ public class BuildManager : MonoBehaviour
     {
         return turretToBuild;
     }
-
 }

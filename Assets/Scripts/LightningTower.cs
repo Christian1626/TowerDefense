@@ -31,7 +31,6 @@ public class LightningTower : TowerAbstract
         }
 
         lineRenderer.Play();
-        Vector3 dir = target.position - transform.position;
         lineRenderer.transform.LookAt(targetEnemy.transform);
 
 
