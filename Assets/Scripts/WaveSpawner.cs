@@ -18,6 +18,10 @@ public class WaveSpawner : MonoBehaviour {
 
     public Text waveCountdownText;
 	
+    void Start()
+    {
+        EnemiesAlive = 0;
+    }
 	// Update is called once per frame
 	void Update () {
         //si des ennemies sont tjr present
