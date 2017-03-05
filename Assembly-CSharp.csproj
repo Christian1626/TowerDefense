@@ -46,6 +46,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\CamTarget.cs" />
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\CharacterDemoController.cs" />
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\MouseOrbit.cs" />
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\Outfitter.cs" />
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\RootMotionOff.cs" />
+     <Compile Include="Assets\Enemies\3\AllStarCharacterLibrary\Scripts\SkinnedMeshCombiner.cs" />
+     <Compile Include="Assets\Enemies\7\DragonBoar\Scripts\playerControl.cs" />
+     <Compile Include="Assets\Enemies\8\Chibi Mummy\Scripts\anims_controls.cs" />
+     <Compile Include="Assets\Enemies\8\Chibi Mummy\Scripts\control_script.cs" />
      <Compile Include="Assets\Scripts\BuildManager.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -70,6 +79,8 @@
      <Compile Include="Assets\Scripts\Wave.cs" />
      <Compile Include="Assets\Scripts\WaveSpawner.cs" />
      <Compile Include="Assets\Scripts\Waypoints.cs" />
+     <None Include="Assets\Enemies\8\Chibi Mummy\readme.txt" />
+     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Logiciels/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
