@@ -10,6 +10,9 @@ public class EnemyMouvement : MonoBehaviour {
 
     private Enemy enemy;
 
+    //modèle de l'ennemy
+    public Transform model;
+
     void Start()
     {
         //recupère l'enemmi du component
@@ -19,6 +22,9 @@ public class EnemyMouvement : MonoBehaviour {
 
     void Update()
     {
+
+        model.transform.LookAt(target);
+
         //l'ennemie se dirige vers le waypoint
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
