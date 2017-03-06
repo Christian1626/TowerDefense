@@ -30,11 +30,19 @@ public class EnemyMouvement : MonoBehaviour {
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
         //si on a atteint le waypoint
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if (vector2DDistance(transform.position, target.position) <= 1f)
         {
             GetNextWaypoint();
         }
     }
+
+    private float vector2DDistance(Vector3 v1, Vector3 v2)
+    {
+        float xDiff = v1.x - v2.x;
+        float zDiff = v1.z - v2.z;
+        return Mathf.Sqrt((xDiff * xDiff) + (zDiff * zDiff));
+    }
+
 
     void ResetSpeed()
     {
