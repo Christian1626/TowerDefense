@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(transform.position,explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if(collider.tag == "Enemy")
+            if (collider.tag == "Enemy")
             {
                 Damage(collider.transform);
                 if (zoneSlowImpact)
@@ -77,8 +77,8 @@ public class Bullet : MonoBehaviour {
     void Damage(Transform enemy)
     {
         Enemy e = enemy.GetComponent<Enemy>();
-
-        if(e != null)
+        Debug.Log("ennemy:" + e);
+        if (e != null)
         {
             e.TakeDamage(damage);
         } 
