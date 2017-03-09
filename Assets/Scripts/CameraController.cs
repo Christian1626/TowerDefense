@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour {
     public float scrollSpeed = 10f;
 
     private bool doMovement = true;
-    public float minY = 10f;
-    public float maxY = 100f;
+    public float minY = 5f;
+    public float maxY = 50f;
     // Use this for initialization
     void Start () {
 		
@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour {
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Vector3 pos = transform.position;
-        pos.y -= scroll * 100 * scrollSpeed * Time.deltaTime;
+        pos.y -= scroll * 50 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
         transform.position = pos;

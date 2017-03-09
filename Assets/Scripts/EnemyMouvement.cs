@@ -30,7 +30,7 @@ public class EnemyMouvement : MonoBehaviour {
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
         //si on a atteint le waypoint
-        if (vector2DDistance(transform.position, target.position) <= 1f)
+        if (vector2DDistance(transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
