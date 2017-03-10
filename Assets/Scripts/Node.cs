@@ -19,6 +19,7 @@ public class Node : MonoBehaviour {
     public bool isUpgraded;
 
     private Renderer rend;
+    private Mesh mesh;
     private Color startColor;
    
     BuildManager buildManager;
@@ -43,7 +44,8 @@ public class Node : MonoBehaviour {
         if (!buildManager.CanBuild)
             return;
 
-        if(buildManager.HasMoney)
+        rend.enabled = true;
+        if (buildManager.HasMoney)
         {
             rend.material.color = hoverColor;
         } else
@@ -55,6 +57,7 @@ public class Node : MonoBehaviour {
     void OnMouseExit()
     {
         rend.material.color = startColor;
+        rend.enabled = false;
     }
 
     void OnMouseDown()
